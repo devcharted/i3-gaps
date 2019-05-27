@@ -7,24 +7,13 @@
 
 # i3 config file (v4)
 #
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
-
-#Needed for i3-gaps
-#hide_edge_borders both
-for_window [class="^.*"] border pixel 2 
-gaps inner 15 
-gaps outer 15
-
-bindsym $mod+z		gaps outer current plus 5
-bindsym $mod+Shift+z	gaps outer current minus 5
-
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Source Code Pro Light 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -47,11 +36,18 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Disable window titlebars entirely
+for_window [class="^.*"] border pixel 3
+
+# Gaps
+gaps inner 5
+gaps outer 5
 
 # change focus
 bindsym $mod+j focus left
@@ -103,36 +99,49 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
 # switch to workspace
-bindsym $mod+1 workspace Terminals 
-bindsym $mod+2 workspace TV 
-bindsym $mod+3 workspace Browser 
-bindsym $mod+4 workspace Music 
-bindsym $mod+5 workspace FileManager 
-bindsym $mod+6 workspace IRC 
-bindsym $mod+7 workspace E-Mail 
-bindsym $mod+8 workspace Random
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace Terminals 
-bindsym $mod+Shift+2 move container to workspace TV 
-bindsym $mod+Shift+3 move container to workspace Browser 
-bindsym $mod+Shift+4 move container to workspace Music 
-bindsym $mod+Shift+5 move container to workspace FileManager 
-bindsym $mod+Shift+6 move container to workspace IRC 
-bindsym $mod+Shift+7 move container to workspace E-Mail 
-bindsym $mod+Shift+8 move container to workspace Random
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace dfd#$ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -153,82 +162,41 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
+        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-# Color settings
-
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-
-
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #424242
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #424242
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #424242
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #424242
-
-#hide_edge_borders both
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar
-	{
-#output DVI-I-1
-	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-	tray_output HDMI-0
-	}
+bar {
+        status_command i3status
+}
 
-# set display hdmi-0
-exec xrandr --output HDMI-0 --mode 1920x1080
-
-# Screensaver Settings
-exec --no-startup-id xset dpms 600
-
-# exec --no-startup-id xautolock -time 30 -locker electricsheep
+exec --no-startup-id feh --bg-scale ~/Pictures/minimal/1920x1600.png
+exec --no-startup-id nm-applet
 
 # Lock screen
-bindsym $mod+F9 exec i3lock -c 000000 -i /home/mathisen/Images/lock.png
+bindsym Control+Alt+l exec i3lock -e -i ~/Pictures/minimal/1920x1600.png
 
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize shrink left 100, resize shrink right 100, resize shrink down 50, resize shrink up 50
 
-# Assign programs to specific workspace
-assign [class="Chromium"] Browser 
-assign [class="Thunar"] FileManager 
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Pulse Audio Controls
-bindsym $mod+F12 exec pamixer -i 5
-bindsym $mod+F11 exec pamixer -d 5
-bindsym $mod+shift+F12 exec pamixer --set-volume 0
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
-# Wallpaper settings
-exec_always feh --bg-scale --randomize /home/mathisen/Images
-
-# Auto exec settings
-exec chromium
-exec urxvt
-
-# Program exec
-bindsym $mod+F5 exec pavucontrol
-bindsym $mod+F6 exec thunar
-bindsym $mod+F8 exec xfce4-screenshooter
-
-#            EDIT THIS SO IT FIT YOUR NEEDS
-# ======================================================
-
-# Set Swedish keyboard 
-exec setxkbmap se
-
-# Set resoultion
-exec xrandr --output VGA-1 --mode 1920x1080
-
-# ======================================================
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
