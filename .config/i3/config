@@ -43,7 +43,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # start rofi 
-bindsym Mod1+space exec --no-startup-id rofi -show run
+bindsym Mod1+space exec --no-startup-id rofi -show drun -show-icons
 
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 1
@@ -183,7 +183,7 @@ exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/shift_4k_wallpaper_by
 exec --no-startup-id nm-applet
 
 # Lock screen
-bindsym Control+Mod1+l exec i3lock -e -i ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
+#bindsym Control+Mod1+l exec i3lock -e -i ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
 
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
