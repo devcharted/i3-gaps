@@ -176,7 +176,7 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id feh --bg-scale ~/Pictures/minimal/1920x1600.png
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/tiny_vessel_by_bryan_cuttance_d1evht3.jpg
 exec --no-startup-id nm-applet
 
 # Lock screen
