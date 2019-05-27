@@ -42,11 +42,11 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# start rofi
+# start rofi 
 bindsym $mod+d exec --no-startup-id rofi -show run
 
 # Disable window titlebars entirely
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 
 # Gaps
 gaps inner 5
@@ -179,11 +179,11 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/tiny_vessel_by_bryan_cuttance_d1evht3.jpg
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
 exec --no-startup-id nm-applet
 
 # Lock screen
-bindsym Control+Mod1+l exec i3lock -e -i ~/Pictures/minimal/1920x1600.png
+bindsym Control+Mod1+l exec i3lock -e -i ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
 
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
