@@ -125,7 +125,7 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace dfd#$ws1
+bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
@@ -180,7 +180,7 @@ exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/tiny_vessel_by_bryan_
 exec --no-startup-id nm-applet
 
 # Lock screen
-bindsym Control+Alt+l exec i3lock -e -i ~/Pictures/minimal/1920x1600.png
+bindsym Control+Mod1+l exec i3lock -e -i ~/Pictures/minimal/1920x1600.png
 
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
