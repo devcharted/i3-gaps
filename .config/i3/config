@@ -203,7 +203,6 @@ exec --no-startup-id xcompmgr
 
 # Lock screen
 bindsym Control+$mod+l exec /usr/libexec/kscreenlocker_greet
-exec xautolock -time 10 -locker '/usr/libexec/kscreenlocker_greet'
 
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
