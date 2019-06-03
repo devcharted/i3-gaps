@@ -194,7 +194,8 @@ bar {
         	urgent_workspace   #1f343a #900000 #ffffff
 	}
 
-        status_command i3status
+        #status_command i3status
+	status_command i3block
 }
 
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
