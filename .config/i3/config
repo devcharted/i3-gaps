@@ -104,10 +104,10 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:Opera"
+set $ws1 "1:Generic"
 set $ws2 "2:Terminal"
-set $ws3 "3:Intellij"
-set $ws4 "4"
+set $ws3 "3:Opera"
+set $ws4 "4:Intellij"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -194,13 +194,14 @@ bar {
         	urgent_workspace   #1f343a #900000 #ffffff
 	}
 
-        #status_command i3status
-	status_command i3block
+        status_command i3blocks
 }
 
+# Autostart
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
 exec --no-startup-id nm-applet
 exec --no-startup-id xcompmgr
+exec --no-startup-id volumeicon
 
 # Lock screen
 bindsym Control+$mod+l exec /usr/libexec/kscreenlocker_greet
@@ -208,6 +209,9 @@ bindsym Control+$mod+l exec /usr/libexec/kscreenlocker_greet
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize shrink left 100, resize shrink right 100, resize shrink down 50, resize shrink up 50
+
+# Focus follows mouse
+focus_follows_mouse no
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
