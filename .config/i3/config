@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Source Code Pro Light 8
+font pango:Source Code Pro 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,7 +30,7 @@ font pango:Source Code Pro Light 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -104,16 +104,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:Generic"
-set $ws2 "2:Terminal"
-set $ws3 "3:Opera"
-set $ws4 "4:Intellij"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -202,13 +202,15 @@ exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/shift_4k_wallpaper_by
 exec --no-startup-id nm-applet
 exec --no-startup-id xcompmgr
 exec --no-startup-id volumeicon
+exec --no-startup-id udiskie
 
 # Lock screen
-bindsym Control+$mod+l exec /usr/libexec/kscreenlocker_greet
+#bindsym Control+$mod+l exec dm-tool switch-to-greeter
+bindsym Control+$mod+l exec i3lock-fancy-rapid 5 3
 
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Pavucontrol"] resize shrink left 100, resize shrink right 100, resize shrink down 50, resize shrink up 50
+#for_window [class="Pavucontrol"] resize grow left 0px, resize grow right 0px, resize shrink down 0px, resize shrink up 0px
 
 # Focus follows mouse
 focus_follows_mouse no
@@ -218,7 +220,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
