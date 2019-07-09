@@ -60,7 +60,6 @@ Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
-Plug 'tyrannicaltoucan/vim-deep-space'
 
 "*****************************************************************************
 "" Custom bundles
@@ -164,14 +163,14 @@ set ruler
 set number
 
 let no_buffers_menu=1
-silent! colorscheme molokai
+colorscheme molokai
+let g:molokai_original = 1
 
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
 
 "" Disable the blinking cursor.
-set gcr=a:blinkon0
 set scrolloff=3
 
 "" Status bar
