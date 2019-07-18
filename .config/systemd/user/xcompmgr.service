@@ -1,0 +1,10 @@
+[Unit]
+Description=Xcompmgr Compositor Manager for X11
+After=session.target
+
+[Service]
+ExecStart=/usr/bin/xcompmgr
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=Autocutsel, Sync X Clipboard And Cutbuffer
+PartOf=xsession.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+StandardOutput=journal
+ExecStart=/usr/bin/autocutsel -fork
+ExecStart=/usr/bin/autocutsel -selection PRIMARY -fork
+
+[Install]
+WantedBy=default.target
+

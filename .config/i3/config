@@ -201,8 +201,6 @@ bar {
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
 exec --no-startup-id nm-applet
 exec --no-startup-id xcompmgr
-exec --no-startup-id volumeicon
-exec --no-startup-id udiskie
 
 # Lock screen
 #bindsym Control+$mod+l exec dm-tool switch-to-greeter
