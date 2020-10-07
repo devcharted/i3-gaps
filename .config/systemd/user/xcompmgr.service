@@ -3,7 +3,9 @@ Description=Xcompmgr Compositor Manager for X11
 After=session.target
 
 [Service]
+Type=simple
 ExecStart=/usr/bin/xcompmgr
+Restart=always
 
 [Install]
 WantedBy=default.target

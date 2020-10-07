@@ -194,32 +194,42 @@ bar {
         	urgent_workspace   #1f343a #900000 #ffffff
 	}
 
-        status_command i3blocks
+       status_command i3blocks
 }
+
+# Lock screen
+bindsym Control+$mod+l exec dm-tool switch-to-greeter
 
 # Autostart
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/shift_4k_wallpaper_by_supersaejang_d8spcgk.png
+exec --no-startup-id teams --disable-gpu
 exec --no-startup-id nm-applet
-exec --no-startup-id xcompmgr
-
-# Lock screen
-#bindsym Control+$mod+l exec dm-tool switch-to-greeter
-bindsym Control+$mod+l exec i3lock-fancy-rapid 5 3
+exec --no-startup-id blueman-applet
+exec --no-startup-id brave --disable-gpu
+exec --no-startup-id idea
+exec --no-startup-id i3-msg 'workspace $ws2; exec /usr/bin/urxvtc'
 
 # Floating programs
 for_window [class="Pavucontrol"] floating enable
-#for_window [class="Pavucontrol"] resize grow left 0px, resize grow right 0px, resize shrink down 0px, resize shrink up 0px
+for_window [title="Microsoft Teams Notification"] floating enable
+
+assign [class="Brave-browser"]             $ws1
+assign [class="jetbrains-idea-ce"]         $ws3
+assign [class="Microsoft Teams - Preview"] $ws4
 
 # Focus follows mouse
 focus_follows_mouse no
+
+# Print screen
+bindsym Print exec flameshot gui 
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%  && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks
 
-bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec sudo light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play

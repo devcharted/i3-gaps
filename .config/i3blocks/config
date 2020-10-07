@@ -18,7 +18,7 @@ command=disk /home 🏠
 interval=10
 
 [battery]
-command=battery CMB1
+command=sudo battery CMB1
 interval=5
 
 [volume]
